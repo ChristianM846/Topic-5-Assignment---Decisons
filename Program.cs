@@ -25,6 +25,7 @@
         public static void Banking()
         {
             Console.WriteLine("It works");
+            // nice
         }
     }
 }
