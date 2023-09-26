@@ -20,6 +20,10 @@
             {
                 Banking();
             }
+            else if (selection == 2)
+            {
+                ParkingGarage();
+            }
         }
 
         public static void Banking()
@@ -31,7 +35,18 @@
             selection = Console.ReadLine().Trim().ToUpper();
             if (selection == "DEPOSIT")
             {
-                Console.WriteLine("deposit");
+                Console.WriteLine("Please select the amount you would like to deposit:");
+                if (Double.TryParse(Console.ReadLine(), out deposit))
+                {
+                    Math.Round(balance, 2);
+                    balance = balance + deposit - 0.75;
+                    Console.WriteLine($"Your deposit of {deposit.ToString("C")} has been made. Your account balance is now {balance.ToString("C")}");
+                }
+                else
+                {
+                    balance = balance - 0.75;
+                    Console.WriteLine($"Invalid input, transaction cancelled. Your account balance is now {balance.ToString("C")}");
+                }
             }
             else if (selection == "WITHDRAWAL")
             {
@@ -40,13 +55,15 @@
                 {
                     if (withdrawal <= balance - 0.75)
                     {
-
+                        Math.Round(withdrawal, 2);
+                        balance = balance - withdrawal - 0.75;
+                        Console.WriteLine($"Your withdrawl of {withdrawal.ToString("C")} has been completed. Your account balance is now {balance.ToString("C")}. Have a nice day.");
                     }
                 }
                 else
                 {
                     balance = balance - 0.75;
-                    Console.WriteLine($"Invalid input, transaction cancelled, your account ballance is now {balance.ToString("C")}");
+                    Console.WriteLine($"Invalid input, transaction cancelled. Your account ballance is now {balance.ToString("C")}");
                 }
             }
             else if (selection == "BILL PAYMENT")
@@ -56,8 +73,9 @@
                 {
                     if (payment <= balance - 0.75) 
                     {
+                        Math.Round(payment, 2);
                         balance = balance - payment - 0.75;
-                        Console.WriteLine($"Your payment has been made. You new account balance is {balance.ToString("C")}. Have a nice day");
+                        Console.WriteLine($"Your payment has been made. Your new account balance is {balance.ToString("C")}. Have a nice day");
                     }
                     else if (payment > balance - 0.75)
                     {
@@ -85,6 +103,11 @@
             {
                 Console.WriteLine($"Invalid input, transaction cancelled, your account ballance is now {balance.ToString("C")}");
             }
+
+        }
+
+        public static void ParkingGarage()
+        {
 
         }
     }
