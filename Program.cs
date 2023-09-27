@@ -181,7 +181,37 @@
 
         public static void Hurricane()
         {
-            Console.WriteLine("Hello");
+            int selection;
+            Console.WriteLine("Hello. I see you're interested in hurricanes. Well, they're split into 5 categories based on their wind speed.");
+            Console.WriteLine("Choose which category you'd like to hear more about");
+
+            while (!Int32.TryParse(Console.ReadLine(), out selection) || selection < 0 || selection > 5)
+            { 
+                Console.WriteLine("Sorry, that's not a valid input. Please choose a number from 1-5");
+            }
+
+            switch (selection)
+            {
+                case 1: 
+                    Console.WriteLine("A category 1 hurricane has wind speeds of 74-95 mph, 119-153 kph, or 64-82 kt"); 
+                    break;
+
+                case 2:
+                    Console.WriteLine("A category 2 hurricane has wind speeds of 96-110 mph, 154-177 kph, or 83-95 kt");
+                    break;
+
+                case 3:
+                    Console.WriteLine("A category 3 hurricane has wind speeds of 111-130 mph, 178-209 kph, or 96-113 kt");
+                    break;
+
+                case 4:
+                    Console.WriteLine("A category 4 hurricane has wind speeds of 131-155 mph, 210-249 kph, or 114-135 kt");
+                    break;
+                case 5:
+                    Console.WriteLine("A category 5 hurricane has wind speeds greater than 155 mph, 249 kmh, or 135 kt");
+                    break;
+
+            }
         }
     }
 }
